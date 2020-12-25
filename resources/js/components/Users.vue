@@ -108,7 +108,7 @@
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                     <button type="submit" class="btn btn-primary">Create</button>
                 </div>
-                <div class="modal-body">
+                <!-- <div class="modal-body">
 
                     <div class="form-group">
                         <input v-model="form.name" type="text" name="name"
@@ -153,7 +153,7 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                     <button type="submit" class="btn btn-primary">Create</button>
-                </div>
+                </div> -->
 
               </form>
 
@@ -185,7 +185,9 @@
                 axios.get("api/user").then(({ data }) => (this.users = data.data));
             },
             createUser() {
+                this.$Progress.start();
                 this.form.post('api/user');
+                this.$Progress.finish();
             }
         },
         created() {

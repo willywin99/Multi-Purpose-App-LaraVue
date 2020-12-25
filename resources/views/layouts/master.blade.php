@@ -197,11 +197,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <i class="nav-icon fas fa-tachometer-alt blue"></i>
                     <p>
                     Dashboard
-                    
+
                     </p>
                 </router-link>
             </li>
-            
+
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-cog green"></i>
@@ -231,7 +231,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <i class="nav-icon fas fa-user orange"></i>
                 <p>
                 Profile
-                
+
                 </p>
             </router-link>
           </li>
@@ -241,7 +241,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <i class="nav-icon fas fa-power-off"></i>
                 <p>
                   Logout
-                
+
                 </p>
             </a> --}}
 
@@ -301,6 +301,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <div class="container-fluid">
         <div class="row">
           <router-view></router-view>
+
+          <vue-progress-bar></vue-progress-bar>
           {{-- <div class="col-lg-6">
             <div class="card">
               <div class="card-body">
