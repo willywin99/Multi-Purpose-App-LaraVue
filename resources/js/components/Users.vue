@@ -89,7 +89,7 @@
                         <select v-model="form.type" name="type" id="type"
                             placeholder="Short type for user (Optional)"
                             class="form-control" :class="{ 'is-invalid': form.errors.has('type') }">
-                            <option value="">Sekect User Role</option>
+                            <option value="">Select User Role</option>
                             <option value="admin">Admin</option>
                             <option value="user">Standard User</option>
                             <option value="author">Author</option>
@@ -187,6 +187,13 @@
             createUser() {
                 this.$Progress.start();
                 this.form.post('api/user');
+
+                $('#addNew').modal('hide')
+                toast.fire({
+                    icon: 'success',
+                    title: 'User created successfully'
+                })
+
                 this.$Progress.finish();
             }
         },
