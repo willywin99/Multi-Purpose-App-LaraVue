@@ -187,6 +187,7 @@
             createUser() {
                 this.$Progress.start();
                 this.form.post('api/user');
+                Fire.$emit('AfterCreate');
 
                 $('#addNew').modal('hide')
                 toast.fire({
@@ -199,7 +200,10 @@
         },
         created() {
             this.loadUsers();
-            setInterval(() => this.loadUsers(), 3000);
+            Fire.$on('AfterCreate', () => {
+                this.loadUsers();
+            });
+            // setInterval(() => this.loadUsers(), 3000);
         }
     }
 </script>
