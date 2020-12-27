@@ -186,16 +186,22 @@
             },
             createUser() {
                 this.$Progress.start();
-                this.form.post('api/user');
-                Fire.$emit('AfterCreate');
 
-                $('#addNew').modal('hide')
-                toast.fire({
-                    icon: 'success',
-                    title: 'User created successfully'
+                this.form.post('api/user')
+                .then(() => {
+                    Fire.$emit('AfterCreate');
+
+                    $('#addNew').modal('hide')
+                    toast.fire({
+                        icon: 'success',
+                        title: 'User created successfully'
+                    })
+
+                    this.$Progress.finish();
                 })
+                .catch(() => {
 
-                this.$Progress.finish();
+                })
             }
         },
         created() {
