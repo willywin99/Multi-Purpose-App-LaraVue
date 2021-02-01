@@ -13,11 +13,11 @@
                 <div class="card card-widget widget-user" style="">
                   <!-- Add the bg color to the header using any of the bg-* classes -->
                   <div class="widget-user-header text-white" style="background-image:url('./img/user-cover.jpg'); height: 300px;">
-                    <h3 class="widget-user-username text-right">Elizabeth Pierce</h3>
+                    <h3 class="widget-user-username text-right">{{ this.form.name }}</h3>
                     <h5 class="widget-user-desc text-right">Web Designer</h5>
                   </div>
                   <div class="widget-user-image">
-                    <img class="img-circle" src="" alt="User Avatar">
+                    <img class="img-circle" :src="getProfilePhoto()" alt="User Avatar">
                   </div>
                   <div class="card-footer">
                     <div class="row">
@@ -134,6 +134,7 @@
     export default {
         data() {
             return {
+                userPhoto:"",
                 form: new Form({
                     id: '',
                     name: '',
@@ -149,6 +150,9 @@
             console.log('Component mounted.')
         },
         methods: {
+            getProfilePhoto() {
+                return "img/profile/"+ this.form.photo;
+            },
             updateInfo() {
                 this.$Progress.start();
                 this.form.put('api/profile/')
@@ -158,6 +162,27 @@
                     .catch( () => {
                         this.$Progress.fail();
                     })
+
+                // this.$Progress.start()
+                // this.form.put('api/profile')
+                //     .then(() => {
+                //         this.$Progress.finish()
+                //         // Toaster form Sweet Alert
+                //         toast({
+                //             type:'success',
+                //             title:'Profile updated!'
+                //         })
+                //         Fire.$emit('AfterUpdate');
+                //     })
+                //     .catch(() => {
+                //         this.$Progress.fail()
+
+                //         // Toaster from Sweet Alert
+                //         toast({
+                //             type:'error',
+                //             title:'Something went wrong!'
+                //         })
+                //     })
             },
             updateProfile(e) {
                 // console.log('uploading');
@@ -186,6 +211,25 @@
         created() {
             axios.get("api/profile")
                 .then(({ data }) => (this.form.fill(data)));
+
+            // this.$Progress.start()
+            // axios.get('api/profile')
+            //     .then(({ data }) => {
+            //         this.userPhoto = "img/profile/" + data.photo;
+            //         Fire.$on('AfterUpdate', () => {
+            //             axios.get('api/profile')
+            //                 .then((data) => {
+            //                     let photo = data.data.photo
+            //                     this.userPhoto = "img/profile/" + photo;
+            //                 })
+            //         })
+            //         this.form.reset();
+            //         this.form.fill(data);
+            //         this.$Progress.finish();
+            //     })
+            //     .catch(() => {
+            //         this.$Progress.fail();
+            //     })
         }
     }
 </script>
