@@ -171,6 +171,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           {{-- <a href="#" class="d-block">Alexander Pierce</a> --}}
           <a href="#" class="d-block">
               {{ Auth::user()->name }}
+              <p> {{ Auth::user()->type }} </p>
           </a>
         </div>
       </div>
