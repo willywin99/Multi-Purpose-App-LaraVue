@@ -202,6 +202,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </router-link>
             </li>
 
+            @can('isAdmin')
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-cog green"></i>
@@ -227,16 +228,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
           </li>
 
           <li class="nav-item">
-            <router-link to="/profile" class="nav-link">
-                <i class="nav-icon fas fa-user orange"></i>
-                <p>
-                Profile
-
-                </p>
-            </router-link>
-          </li>
-          @can('isAdmin')
-          <li class="nav-item">
             <router-link to="/developer" class="nav-link">
                 <i class="nav-icon fas fa-cogs"></i>
                 <p>
@@ -245,6 +236,18 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </router-link>
           </li>
           @endcan
+
+          <li class="nav-item">
+            <router-link to="/profile" class="nav-link">
+                <i class="nav-icon fas fa-user orange"></i>
+                <p>
+                Profile
+
+                </p>
+            </router-link>
+          </li>
+
+
           <li class="nav-item">
             {{-- <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-power-off"></i>
@@ -396,6 +399,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
   </footer>
 </div>
 <!-- ./wrapper -->
+
+@auth
+<script>
+    window.user = @json(auth()->user())
+</script>
+@endauth
 
 <script src="/js/app.js"></script>
 </body>
