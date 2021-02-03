@@ -67034,7 +67034,7 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("h5", { staticClass: "widget-user-desc text-right" }, [
-                _vm._v("Web Designer")
+                _vm._v(" " + _vm._s(this.form.type) + " ")
               ])
             ]
           ),
