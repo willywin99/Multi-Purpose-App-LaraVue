@@ -84369,7 +84369,10 @@ var app = new Vue({
   methods: {
     searchit: _.debounce(function () {
       Fire.$emit('searching');
-    }, 1000)
+    }, 1000),
+    printMe: function printMe() {
+      window.print();
+    }
   }
 });
 
